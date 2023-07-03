@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Commento</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${user}">
+			<a href="/login">Login</a>
+		</div>
+			<div>
+		<a href="/"><img src="/images/logo-siw.png" width="8%"/></a>
+	</div>
+	</header>
+
+	<h1>Commento</h1>
+	<span th:text="${commento.titolo} + ' ('+${commento.commentatore.getName()}+') '"></span>
+	<br>
+	<span th:text="${commento.descrizione}"></span>
+</body>
+
+</html>

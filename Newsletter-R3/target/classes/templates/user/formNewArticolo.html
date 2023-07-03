@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		New Articolo
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${user}">
+			<a href="/login">Login</a>
+		</div>
+			<div>
+		<a href="/"><img src="/images/logo-siw.png" width="8%"/></a>
+	</div>
+	</header>
+	
+	<h1>Aggiungi un Articolo</h1>
+	<form th:action="@{/user/articolo}" method="POST" th:object="${articolo}">
+  		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+  		</div>
+		
+		<div>
+			<label>Titolo:</label> 
+			<span><input type="text" th:field="${articolo.titolo}" /></span>
+		    <span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}">
+		    </span>
+		</div>
+
+		<div>
+			<label>URL immagine:</label> <span><input type="text" th:field="${articolo.urlImage}" /></span>
+		    <span th:if="${#fields.hasErrors('urlImage')}" th:errors="*{urlImage}">
+		    </span>
+		</div>
+
+		<div>
+			<label>Descrizione:</label> 
+			<span><input type="text" th:field="${articolo.descrizione}" /></span>
+		    <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}">
+		    </span>
+		</div>
+		
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+	</form>
+</body>
+
+</html>

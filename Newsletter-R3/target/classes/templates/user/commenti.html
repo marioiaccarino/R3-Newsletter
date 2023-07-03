@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="stile.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${user}">
+			<a href="/login">Login</a>
+		</div>
+  <title>R3 - Newsletter - commenti</title>
+</head>
+<body>
+	
+	<br>
+	<h1 th:text="'commenti di '+${articolo.titolo}"></h1>
+	<br>
+	<div th:if="${commenti==null || commenti.isEmpty()}">Non ci sono commenti per l'articolo</div>
+	<ul>
+		<li th:each="commento : ${commenti}">
+				<br>
+				<span th:text="${commento.titolo} + ' ('+${commento.commentatore.getName()}+')'"></span>
+				<br>
+				<span th:text="${commento.descrizione}"></span>
+				<br>
+				<br>
+				
+			
+				
+		</li>
+	</ul>
+	
+</body>
+</html>

@@ -1,0 +1,3 @@
+-- 
+-- 
+-- insert into articolo (id, descrizione, titolo, url_image, autore_id) values(nextval('articolo_seq'), 'Tim', 'segreteria didattica deserta', 'https://filosofiacomunicazionespettacolo.uniroma3.it/wp-content/uploads/sites/22/2019/10/IMG_20190314_124518-1024x768-480x270.jpg', SELECT User from users WHERE user.id=1);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		R3 - admin - Homepage
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}+'(admin)'"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${user}">
+			<a href="/login">Login</a>
+		</div>
+			<div>
+		<a href="/"><img src="/images/logo-siw.png" width="8%"/></a>
+	</div>
+	</header>
+		<div><h1>Il Giornale di Roma3</h1></div>
+		<div><a th:href="@{/admin/utentiRegistrati}">utenti registrati</a></div>
+		<div><a th:href="@{/admin/articoli}">tutti gli articoli del giornale</a></div>
+</body>
+
+</html>

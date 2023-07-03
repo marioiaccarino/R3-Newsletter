@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${user}">
+			<a href="/login">Login</a>
+		</div>
+			<div>
+		<a href="/"><img src="/images/logo-siw.png" width="8%"/></a>
+	</div>
+  <title>R3 - Newsletter - Homepage</title>
+</head>
+<body>
+	<br>
+	<h1>il Giornale di Roma3</h1>
+	<br>
+	<a th:href="@{'/user/ordinaArticoliPerTendenza'}" style="margin-right: 10px;">ordina articoli per tendenza</a>
+	<a th:href="@{'/user/ordinaArticoliPerDataDiPubblicazione'}">ordina articoli per data di pubblicazione</a>
+	<div th:if="${articoli==null || articoli.isEmpty()}">Non ci sono articoli nel sistema</div>
+	<ul>
+		<li th:each="articolo : ${articoli}">
+				<br>
+				<span th:text="${articolo.titolo} + ' ('+${articolo.getAutore().getName()}+') '"></span>
+				<br>
+				<img th:src="${articolo.urlImage}" width="10%"> 
+				<br>
+				<span th:text="${articolo.descrizione}"></span>
+				<br>
+				<a th:href="@{'/user/commentaArticolo'+'/'+${articolo.id}}">commenta</a>
+				<a th:href="@{'/user/guardaCommenti'+'/'+${articolo.id}}">guarda i commenti</a>
+				<br>
+				<br>
+				<br>
+			
+				
+		</li>
+	</ul>
+	
+</body>
+</html>
